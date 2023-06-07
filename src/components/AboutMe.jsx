@@ -67,12 +67,12 @@ export default function About() {
             Front-end Developer / REACT
           </Typography>
           <Typography variant="body1">
-            I am a front-end developer experienced in CSS3, HTML5, JavaScript,
-            and React. I have project management background and experience with
-            tools like GitHub and Trello. Additionally, I have knowledge in C++
-            and Java. I am passionate about creating functional and visually
-            appealing web interfaces while ensuring high standards of quality
-            and ease of use.
+            Hello, i am a front-end developer experienced in CSS3, HTML5,
+            JavaScript, and React. I have project management background and
+            experience with tools like GitHub and Trello. Additionally, I have
+            knowledge in C++ and Java. I am passionate about creating functional
+            and visually appealing web interfaces while ensuring high standards
+            of quality and ease of use.
           </Typography>
           <StyledButton
             color="primary"
