@@ -11,11 +11,13 @@ import {
   DiNpm,
 } from "react-icons/di";
 import { SiCplusplus, SiMui } from "react-icons/si";
-const BackgroundHome = styled.div`
+
+export const BackgroundAbout = styled.div`
   background: #1a1a2e;
   width: 100%;
-  height: 700px;
-  background-size: cover;
+  height: auto;
+  box-sizing: border-box;
+  padding: 100px 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -28,7 +30,7 @@ const StyledPaper = styled(Paper)`
   width: 40%;
   padding: 20px;
   gap: 20px;
-  height: 60%;
+  height: 400px;
 `;
 
 const StylePaper = styled(Paper)`
@@ -38,7 +40,7 @@ const StylePaper = styled(Paper)`
   width: 40%;
   padding: 20px;
   gap: 20px;
-  height: 60%;
+  height: 400px;
 
   > section {
     display: flex;
@@ -57,54 +59,59 @@ export default function About() {
   const tamañoIcon = "15vh";
 
   return (
-    <div id="About">
-      <BackgroundHome>
-        <StyledPaper elevation={3}>
+    <BackgroundAbout id="About">
+      <StyledPaper
+        elevation={3}
+        sx={{ backgroundColor: "#1f1f2e", color: "white" }}
+      >
+        <Typography variant="h4" component="h2">
+          About me
+        </Typography>
+        <Typography variant="h6" component="h3">
+          Front-end Developer / REACT
+        </Typography>
+        <Typography variant="body1">
+          Hello, i am a front-end developer experienced in CSS3, HTML5,
+          JavaScript, and React. I have project management background and
+          experience with tools like GitHub and Trello. Additionally, I have
+          knowledge in C++ and Java. I am passionate about creating functional
+          and visually appealing web interfaces while ensuring high standards of
+          quality and ease of use.
+        </Typography>
+        <StyledButton
+          color="primary"
+          href="#Home"
+          size="large"
+          variant="contained"
+          sx={{ backgroundColor: "#1a1a2e", color: "white" }}
+        >
+          Download CV
+        </StyledButton>
+      </StyledPaper>
+
+      <StylePaper
+        elevation={3}
+        sx={{ backgroundColor: "#1f1f2e", color: "white" }}
+      >
+        <div>
           <Typography variant="h4" component="h2">
-            About me
+            Skills
           </Typography>
-          <Typography variant="h6" component="h3">
-            Front-end Developer / REACT
-          </Typography>
-          <Typography variant="body1">
-            Hello, i am a front-end developer experienced in CSS3, HTML5,
-            JavaScript, and React. I have project management background and
-            experience with tools like GitHub and Trello. Additionally, I have
-            knowledge in C++ and Java. I am passionate about creating functional
-            and visually appealing web interfaces while ensuring high standards
-            of quality and ease of use.
-          </Typography>
-          <StyledButton
-            color="primary"
-            href="#Home"
-            size="large"
-            variant="contained"
-          >
-            Download CV
-          </StyledButton>
-        </StyledPaper>
+        </div>
 
-        <StylePaper elevation={3}>
-          <div>
-            <Typography variant="h4" component="h2">
-              Skills
-            </Typography>
-          </div>
-
-          <section>
-            <DiCss3 size={tamañoIcon} color="#264de4" />
-            <DiGithubBadge size={tamañoIcon} color="#171515" />
-            <DiHtml5 size={tamañoIcon} color=" #e34c26" />
-            <DiJavascript1 size={tamañoIcon} color="#f0db4f" />
-            <DiReact size={tamañoIcon} color="#61DBFB" />
-            <DiTrello size={tamañoIcon} color="#0084D1" />
-            <SiCplusplus size={tamañoIcon} color="#264de4" />
-            <DiJava size={tamañoIcon} color="#f89820" />
-            <SiMui size={tamañoIcon} color="#0084D1" />
-            <DiNpm size={tamañoIcon} color="#CC3534" />
-          </section>
-        </StylePaper>
-      </BackgroundHome>
-    </div>
+        <section>
+          <DiCss3 size={tamañoIcon} color="#264de4" />
+          <DiGithubBadge size={tamañoIcon} color="#171515" />
+          <DiHtml5 size={tamañoIcon} color=" #e34c26" />
+          <DiJavascript1 size={tamañoIcon} color="#f0db4f" />
+          <DiReact size={tamañoIcon} color="#61DBFB" />
+          <DiTrello size={tamañoIcon} color="#0084D1" />
+          <SiCplusplus size={tamañoIcon} color="#264de4" />
+          <DiJava size={tamañoIcon} color="#f89820" />
+          <SiMui size={tamañoIcon} color="#0084D1" />
+          <DiNpm size={tamañoIcon} color="#CC3534" />
+        </section>
+      </StylePaper>
+    </BackgroundAbout>
   );
 }

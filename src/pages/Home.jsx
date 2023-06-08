@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import Header from "../components/Header";
 import About from "../components/AboutMe";
+import Education from "../components/Education";
 
 const BackgroundHome = styled.div`
   background: url("./bg-fon.jpg");
@@ -51,6 +52,7 @@ export default function Home() {
         </Container>
       </BackgroundHome>
       <About />
+      <Education />
     </section>
   );
 }
