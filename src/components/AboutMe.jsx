@@ -1,5 +1,5 @@
-import { Paper, Typography, Button } from "@mui/material";
 import styled from "styled-components";
+import { Paper, Typography, Button } from "@mui/material";
 import {
   DiCss3,
   DiGithubBadge,
@@ -31,6 +31,7 @@ const StyledPaper = styled(Paper)`
   padding: 20px;
   gap: 20px;
   height: 400px;
+  border: 0.1px solid #23237d;
 `;
 
 const StylePaper = styled(Paper)`
@@ -41,6 +42,7 @@ const StylePaper = styled(Paper)`
   padding: 20px;
   gap: 20px;
   height: 400px;
+  border: 0.1px solid #23237d;
 
   > section {
     display: flex;
@@ -53,6 +55,8 @@ const StylePaper = styled(Paper)`
 
 const StyledButton = styled(Button)`
   width: 50%;
+  background-color: #1a1a2e;
+  color: white;
 `;
 
 export default function About() {
@@ -62,7 +66,7 @@ export default function About() {
     <BackgroundAbout id="About">
       <StyledPaper
         elevation={3}
-        sx={{ backgroundColor: "#1f1f2e", color: "white" }}
+        style={{ backgroundColor: "#1c1c36", color: "white" }}
       >
         <Typography variant="h4" component="h2">
           About me
@@ -71,8 +75,8 @@ export default function About() {
           Front-end Developer / REACT
         </Typography>
         <Typography variant="body1">
-          Hello, i am a front-end developer experienced in CSS3, HTML5,
-          JavaScript, and React. I have project management background and
+          Hello, I am a front-end developer experienced in CSS3, HTML5,
+          JavaScript, and React. I have a project management background and
           experience with tools like GitHub and Trello. Additionally, I have
           knowledge in C++ and Java. I am passionate about creating functional
           and visually appealing web interfaces while ensuring high standards of
@@ -83,7 +87,6 @@ export default function About() {
           href="#Home"
           size="large"
           variant="contained"
-          sx={{ backgroundColor: "#1a1a2e", color: "white" }}
         >
           Download CV
         </StyledButton>
@@ -91,7 +94,7 @@ export default function About() {
 
       <StylePaper
         elevation={3}
-        sx={{ backgroundColor: "#1f1f2e", color: "white" }}
+        style={{ backgroundColor: "#1c1c36", color: "white" }}
       >
         <div>
           <Typography variant="h4" component="h2">
@@ -102,7 +105,7 @@ export default function About() {
         <section>
           <DiCss3 size={tamañoIcon} color="#264de4" />
           <DiGithubBadge size={tamañoIcon} color="#171515" />
-          <DiHtml5 size={tamañoIcon} color=" #e34c26" />
+          <DiHtml5 size={tamañoIcon} color="#e34c26" />
           <DiJavascript1 size={tamañoIcon} color="#f0db4f" />
           <DiReact size={tamañoIcon} color="#61DBFB" />
           <DiTrello size={tamañoIcon} color="#0084D1" />

@@ -1,8 +1,16 @@
 import { styled } from "styled-components";
 import { Typography, Grid } from "@mui/material";
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import {
+  DiCss3,
+  DiHtml5,
+  DiJavascript1,
+  DiReact,
+  DiJava,
+  DiMysql,
+} from "react-icons/di";
+import { SiCplusplus, SiJest } from "react-icons/si";
 
 export const BackgroundEducation = styled.div`
   background: #1a1a2e;
@@ -16,6 +24,61 @@ export const BackgroundEducation = styled.div`
   align-items: center;
 `;
 
+const StyledCard = styled.div`
+  background-color: transparent;
+  width: 250px;
+  height: 400px;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  font-family: sans-serif;
+`;
+
+const CardInner = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+
+  ${StyledCard}:hover & {
+    transform: rotateY(180deg);
+  }
+`;
+
+const CardFront = styled.div`
+  /* Estilos para el frente de la tarjeta */
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: 1px solid #464680;
+  border-radius: 1rem;
+  background: transparent;
+  color: white;
+`;
+
+const CardBack = styled.div`
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: 1px solid #464680;
+  border-radius: 1rem;
+  background: transparent;
+  color: white;
+  transform: rotateY(180deg);
+`;
+
 export default function Education() {
   const cardsEducation = [
     {
@@ -24,13 +87,23 @@ export default function Education() {
       titulo: "React: From zero to expert",
       fecha: "February 2023 - May 2023",
       skills: "Hooks, JEST, React Testing Library",
+      logos: [
+        <DiReact key="react-icon" size={"100px"} color="#61DBFB" />,
+        <SiJest size={"70px"} color="#c63c14" key="react-icon" />,
+      ],
     },
     {
       institucion: "ORACLE Next Education",
-      logo: "https://www.oracle.com/a/ocom/img/rh03-one-v-black-lad.png",
+      logo: "./one.png",
       titulo: "React front-end developer",
       fecha: "November 2022 - June 2023",
       skills: "Agile, Soft Skills, JavaScript, HTML, CSS, React",
+      logos: [
+        <DiCss3 size={"80px"} color="#264de4" key="react-icon" />,
+        <DiHtml5 size={"80px"} color=" #e34c26" key="react-icon" />,
+        <DiJavascript1 size={"80px"} color="#f0db4f" key="react-icon" />,
+        <DiReact size={"80px"} color="#61DBFB" key="react-icon" />,
+      ],
     },
     {
       institucion: "Surcolombiana University",
@@ -38,6 +111,11 @@ export default function Education() {
       titulo: "Software Developer",
       fecha: "February 2022 - Currently",
       skills: "JAVA, Terminal Linux, C++, Workbench, Software Engineering",
+      logos: [
+        <SiCplusplus size={"80px"} color="#264de4" key="react-icon" />,
+        <DiJava size={"80px"} color="#f89820" key="react-icon" />,
+        <DiMysql size={"80px"} color="white" key="react-icon" />,
+      ],
     },
   ];
 
@@ -46,52 +124,65 @@ export default function Education() {
       <Typography variant="h4">Education</Typography>
       <Grid container spacing={5} justifyContent="center">
         {cardsEducation.map(
-          ({ institucion, logo, titulo, fecha, skills }, i) => (
+          ({ institucion, logo, titulo, fecha, skills, logos }, i) => (
             <Grid item key={i}>
-              <Card
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  width: "300px",
-                  height: "75vh",
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  image={logo}
-                  alt={institucion}
-                  sx={{
-                    width: "85%",
-                    height: "50%",
-                    boxSizing: "border-box",
-                    padding: "10px",
-                    objectFit: "fill",
-                  }}
-                />
-                <CardContent
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "10px",
-                  }}
-                >
-                  <Typography
-                    variant="h5"
-                    component="div"
-                    sx={{ fontWeight: "bold", color: "#03C988" }}
-                  >
-                    {titulo}
-                  </Typography>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {fecha}
-                  </Typography>
-                  <Typography variant="h7" color="text.secondary">
-                    {skills}
-                  </Typography>
-                </CardContent>
-              </Card>
+              <StyledCard>
+                <CardInner>
+                  <CardFront>
+                    <CardMedia
+                      component="img"
+                      image={logo}
+                      alt={institucion}
+                      sx={{
+                        background: "white",
+                        borderRadius: "10px",
+                        width: "50%",
+                        height: "auto",
+                        boxSizing: "border-box",
+                        padding: "10px",
+                        objectFit: "fill",
+                      }}
+                    />
+                    <CardContent
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        height: "30%",
+                        gap: "10px",
+                      }}
+                    >
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ textAlign: "center", color: "#03C988" }}
+                      >
+                        {titulo}
+                      </Typography>
+                      <Typography gutterBottom variant="body2" component="div">
+                        {fecha}
+                      </Typography>
+                    </CardContent>
+                  </CardFront>
+                  <CardBack>
+                    <div
+                      style={{
+                        flexWrap: "wrap",
+                        alignItems: "center",
+                        justifyContent: "space-around",
+                        display: "flex",
+                      }}
+                    >
+                      {logos.map((skill, i) => (
+                        <span key={i}>{skill}</span>
+                      ))}
+                    </div>
+                    <Typography variant="body2" component="div">
+                      {skills}
+                    </Typography>
+                  </CardBack>
+                </CardInner>
+              </StyledCard>
             </Grid>
           )
         )}
