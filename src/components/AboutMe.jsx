@@ -11,16 +11,22 @@ import {
   DiNpm,
 } from "react-icons/di";
 import { SiCplusplus, SiMui } from "react-icons/si";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
-export const BackgroundAbout = styled.div`
+export const BackgroundAbout = styled.section`
   background: #1a1a2e;
   width: 100%;
   height: auto;
   box-sizing: border-box;
-  padding: 100px 0;
+  padding: 130px 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    /* Estilos para pantallas de hasta 768px (pantallas de celulares) */
+  }
 `;
 
 const StyledPaper = styled(Paper)`
@@ -31,7 +37,11 @@ const StyledPaper = styled(Paper)`
   padding: 20px;
   gap: 20px;
   height: 400px;
-  border: 0.1px solid #23237d;
+  border: 1px solid #23237d;
+
+  &:hover {
+    background-color: #292947;
+  }
 `;
 
 const StylePaper = styled(Paper)`
@@ -42,9 +52,13 @@ const StylePaper = styled(Paper)`
   padding: 20px;
   gap: 20px;
   height: 400px;
-  border: 0.1px solid #23237d;
+  border: 1px solid #23237d;
 
-  > section {
+  &:hover {
+    background-color: #292947;
+  }
+
+  > span {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -60,13 +74,25 @@ const StyledButton = styled(Button)`
 `;
 
 export default function About() {
-  const tamañoIcon = "15vh";
-
+  const tamañoIcon = "97px";
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false,
+    });
+  }, []);
   return (
     <BackgroundAbout id="About">
       <StyledPaper
+        data-aos="fade-right"
         elevation={3}
-        style={{ backgroundColor: "#1c1c36", color: "white" }}
+        sx={{
+          backgroundColor: "#1c1c36",
+          color: "white",
+          transition: "0.5s all",
+        }}
       >
         <Typography variant="h4" component="h2">
           About me
@@ -93,8 +119,13 @@ export default function About() {
       </StyledPaper>
 
       <StylePaper
+        data-aos="fade-left"
         elevation={3}
-        style={{ backgroundColor: "#1c1c36", color: "white" }}
+        sx={{
+          backgroundColor: "#1c1c36",
+          color: "white",
+          transition: "0.5s all",
+        }}
       >
         <div>
           <Typography variant="h4" component="h2">
@@ -102,7 +133,7 @@ export default function About() {
           </Typography>
         </div>
 
-        <section>
+        <span>
           <DiCss3 size={tamañoIcon} color="#264de4" />
           <DiGithubBadge size={tamañoIcon} color="#171515" />
           <DiHtml5 size={tamañoIcon} color="#e34c26" />
@@ -113,7 +144,7 @@ export default function About() {
           <DiJava size={tamañoIcon} color="#f89820" />
           <SiMui size={tamañoIcon} color="#0084D1" />
           <DiNpm size={tamañoIcon} color="#CC3534" />
-        </section>
+        </span>
       </StylePaper>
     </BackgroundAbout>
   );

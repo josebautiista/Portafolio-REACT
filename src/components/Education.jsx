@@ -11,13 +11,16 @@ import {
   DiMysql,
 } from "react-icons/di";
 import { SiCplusplus, SiJest } from "react-icons/si";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
-export const BackgroundEducation = styled.div`
+export const BackgroundEducation = styled.section`
   background: #1a1a2e;
   width: 100%;
   height: auto;
   box-sizing: border-box;
-  padding: 80px 0;
+  padding: 120px 0;
   display: flex;
   gap: 20px;
   flex-direction: column;
@@ -47,7 +50,6 @@ const CardInner = styled.div`
 `;
 
 const CardFront = styled.div`
-  /* Estilos para el frente de la tarjeta */
   box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
   position: absolute;
   display: flex;
@@ -77,9 +79,22 @@ const CardBack = styled.div`
   background: transparent;
   color: white;
   transform: rotateY(180deg);
+  box-sizing: border-box;
+  padding: 30px;
+  ${StyledCard}:hover & {
+    border: 1px solid #7d7dd1;
+  }
 `;
 
 export default function Education() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false,
+    });
+  }, []);
   const cardsEducation = [
     {
       institucion: "Udemy",
@@ -126,7 +141,7 @@ export default function Education() {
         {cardsEducation.map(
           ({ institucion, logo, titulo, fecha, skills, logos }, i) => (
             <Grid item key={i}>
-              <StyledCard>
+              <StyledCard data-aos="fade-right">
                 <CardInner>
                   <CardFront>
                     <CardMedia
