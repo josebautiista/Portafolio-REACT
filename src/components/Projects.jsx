@@ -20,26 +20,31 @@ const project = [
     src: "./mokepon.png",
     alt: "juego-mokepon",
     link: "https://josebautiista.github.io/Mokepon/",
+    repo: "https://github.com/josebautiista/Mokepon",
   },
   {
     src: "./hooks.png",
     alt: "Hooks y buenas practicas",
     link: "https://hooks-buenas-practicas-react.vercel.app/",
+    repo: "https://github.com/josebautiista/Hooks-Buenas-practicas_REACT",
   },
   {
     src: "./notas.png",
     alt: "App para notas",
     link: "https://josebautiista.github.io/Notas-Manipulando_DOM/",
+    repo: "https://github.com/josebautiista/Notas-Manipulando_DOM",
   },
   {
     src: "./organizacion.png",
     alt: "App para organizacion",
     link: "https://organizacion-react.vercel.app/",
+    repo: "https://github.com/josebautiista/Organizacion-REACT",
   },
   {
     src: "./styled-components.png",
     alt: "App con diseño",
     link: "https://styled-component-react-sepia.vercel.app/",
+    repo: "https://github.com/josebautiista/Styled-component-REACT",
   },
 ];
 

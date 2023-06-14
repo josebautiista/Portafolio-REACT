@@ -110,7 +110,8 @@ export default function About() {
         </Typography>
         <StyledButton
           color="primary"
-          href="#Home"
+          href="./Hoja-De-Vida-Jose.pdf"
+          download
           size="large"
           variant="contained"
         >

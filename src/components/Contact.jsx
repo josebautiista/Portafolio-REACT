@@ -19,6 +19,12 @@ const ContactTitle = styled(Typography)`
   color: white;
 `;
 
+const DivContact = styled.div`
+  height: 40vh;
+  display: flex;
+  justify-content: space-evenly;
+`;
+
 const ContactLink = styled(Link)`
   display: flex;
   align-items: center;
@@ -41,41 +47,53 @@ export default function Contact() {
       mirror: false,
     });
   }, []);
+
+  const contactLinks = [
+    {
+      href: "mailto:josebautiista@gmail.com",
+      color: "#BB001B",
+      icon: <AiOutlineMail size={50} />,
+      label: "josebautiista@gmail.com",
+    },
+    {
+      href: "https://github.com/josebautiista",
+      target: "_blank",
+      color: "#9489c9",
+      icon: <AiFillGithub size={50} />,
+      label: "JOSEBAUTIISTA",
+    },
+    {
+      href: "https://www.linkedin.com/in/jose-bautista-sft/",
+      target: "_blank",
+      color: "#0e76a8",
+      icon: <AiFillLinkedin size={50} />,
+      label: "Jose Bautista",
+    },
+  ];
+
   return (
     <ContactSection id="Contact">
       <ContactTitle
         variant="h4"
         sx={{ marginBottom: "50px" }}
-        data-aos="fade-left"
+        data-aos="fade-up"
       >
         Contact Me
       </ContactTitle>
-      <ContactLink
-        data-aos="fade-right"
-        href="mailto:josebautiista@gmail.com"
-        sx={{ color: "#BB001B", textDecoration: "none", fontSize: "20px" }}
-      >
-        <AiOutlineMail size={50} />
-        josebautiista@gmail.com
-      </ContactLink>
-      <ContactLink
-        data-aos="fade-left"
-        href="https://github.com/josebautiista"
-        target="_blank"
-        sx={{ color: "#9489c9", textDecoration: "none", fontSize: "20px" }}
-      >
-        <AiFillGithub size={50} />
-        GitHub
-      </ContactLink>
-      <ContactLink
-        data-aos="fade-right"
-        href="https://www.linkedin.com/in/jose-bautista-sft/"
-        target="_blank"
-        sx={{ color: " #0e76a8", textDecoration: "none", fontSize: "20px" }}
-      >
-        <AiFillLinkedin size={50} />
-        LinkedIn
-      </ContactLink>
+      <DivContact>
+        {contactLinks.map((link, index) => (
+          <ContactLink
+            key={link.label}
+            data-aos={index % 2 === 0 ? "fade-down" : "fade-up"}
+            href={link.href}
+            target={link.target}
+            sx={{ color: link.color, textDecoration: "none", fontSize: "20px" }}
+          >
+            {link.icon}
+            {link.label}
+          </ContactLink>
+        ))}
+      </DivContact>
     </ContactSection>
   );
 }
