@@ -60,7 +60,7 @@ export default function Contact() {
       target: "_blank",
       color: "#9489c9",
       icon: <AiFillGithub size={50} />,
-      label: "JOSEBAUTIISTA",
+      label: "Josebautiista",
     },
     {
       href: "https://www.linkedin.com/in/jose-bautista-sft/",

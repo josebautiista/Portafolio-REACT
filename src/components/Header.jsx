@@ -1,9 +1,10 @@
-import { Toolbar } from "@mui/material";
+import { Toolbar, useMediaQuery } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { useState, useEffect, useRef } from "react";
+import MenuIcon from "@mui/icons-material/Menu";
 
 function Header() {
   const menus = ["Home", "About", "Education", "Projects", "Contact"];
@@ -11,6 +12,8 @@ function Header() {
   const [links, setLinks] = useState([]);
   const linksRef = useRef(null);
   const [currentSection, setCurrentSection] = useState("");
+  const isMobile = useMediaQuery("(max-width:720px)");
+  const [menu, setMenu] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +40,6 @@ function Header() {
       const handleScroll = () => {
         setCurrentSection(getCurrentSection());
         if (currentSection && !trackedSections.has(currentSection)) {
-          console.log(currentSection);
           trackedSections.add(currentSection);
         }
       };
@@ -68,43 +70,81 @@ function Header() {
     });
   }, [currentSection]);
 
+  const handleMenuClick = () => {
+    setMenu(!menu);
+  };
+
+  useEffect(() => {
+    if (isMobile) {
+      const linksContainer = linksRef.current;
+
+      if (menu) {
+        linksContainer.style.display = "flex";
+        setTimeout(() => {
+          linksContainer.style.opacity = "1";
+        }, 10);
+      } else {
+        linksContainer.style.opacity = "0";
+        setTimeout(() => {
+          linksContainer.style.display = "none";
+        }, 300);
+      }
+    }
+  }, [isMobile, menu]);
+
   return (
     <AppBar
       position="fixed"
       sx={{
         display: "flex",
-        flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center",
         height: "80px",
         width: "100%",
-        margin: "0 auto",
         background: isScrolling ? "#1A1A2E" : "transparent",
         transition: "background-color 0.3s ease-in-out",
       }}
     >
-      <Container
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <Container sx={{ height: "100%" }}>
         <Toolbar
           sx={{
             display: "flex",
             justifyContent: "space-around",
-            alignItems: "center",
+            textAlign: "center",
+            height: "100%",
             width: "100%",
           }}
         >
           <Typography variant="h6" component="div">
-            {"< Jose Bautista />"}
+            {isMobile ? "< JB />" : "< Jose Bautista />"}
           </Typography>
+          {isMobile ? (
+            <MenuIcon
+              fontSize="large"
+              onClick={handleMenuClick}
+              sx={{ cursor: "pointer" }}
+            />
+          ) : (
+            ""
+          )}
           <div
             id="links"
             ref={linksRef}
-            style={{ display: "flex", gap: "30px" }}
+            style={{
+              display: isMobile ? "none" : "flex",
+              ...(isMobile && {
+                opacity: "0",
+                position: "absolute",
+                top: "80px",
+                left: "-24px",
+                height: "90vh",
+                background: "#1A1A2E",
+                width: "100%",
+                justifyContent: "space-evenly",
+                transition: "opacity 0.3s ease-in-out",
+              }),
+              flexDirection: isMobile ? "column" : "row",
+              gap: "30px",
+            }}
           >
             {menus.map((nombre, i) => (
               <Link
@@ -113,6 +153,7 @@ function Header() {
                 underline="hover"
                 sx={{ cursor: "pointer", marginLeft: "10px" }}
                 href={`/#${nombre}`}
+                onClick={handleMenuClick}
               >
                 {nombre}
               </Link>

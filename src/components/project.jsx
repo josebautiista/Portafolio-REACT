@@ -3,11 +3,12 @@ import { styled } from "styled-components";
 import { DiGithubBadge } from "react-icons/di";
 import { Fab, Tooltip } from "@mui/material";
 
-export const ImgContainer = styled.a`
+export const ImgContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const Img = styled.img`
@@ -23,12 +24,26 @@ export const FabContainer = styled.div`
 export default function Project(props) {
   const { src, alt, link, repo } = props.datos;
 
+  const handleImgClick = () => {
+    window.open(link, "_blank");
+  };
+
+  const handleFabClick = (event) => {
+    event.stopPropagation();
+    window.open(repo, "_blank");
+  };
+
   return (
-    <ImgContainer href={link} target="_blank">
+    <ImgContainer onClick={handleImgClick}>
       <Img src={src} alt={alt} />
       <FabContainer>
         <Tooltip title="Repositorio" arrow={true} placement="top">
-          <Fab color="primary" aria-label="add" href={repo} target="_blank">
+          <Fab
+            color="primary"
+            aria-label="add"
+            onClick={handleFabClick}
+            target="_blank"
+          >
             <DiGithubBadge size={"50px"} />
           </Fab>
         </Tooltip>
