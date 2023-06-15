@@ -24,9 +24,12 @@ export const BackgroundAbout = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  @media screen and (max-width: 768px) {
-    /* Estilos para pantallas de hasta 768px (pantallas de celulares) */
-  }
+  ${({ isMobile }) =>
+    isMobile &&
+    `
+    flex-direction: column;
+    gap:30px;
+  `}
 `;
 
 const StyledPaper = styled(Paper)`
@@ -36,12 +39,18 @@ const StyledPaper = styled(Paper)`
   width: 40%;
   padding: 20px;
   gap: 20px;
-  height: 400px;
+  height: auto;
   border: 1px solid #23237d;
+  box-sizing: border-box;
 
   &:hover {
     background-color: #292947;
   }
+  ${({ isMobile }) =>
+    isMobile &&
+    `
+    width: 90%;
+  `}
 `;
 
 const StylePaper = styled(Paper)`
@@ -53,7 +62,12 @@ const StylePaper = styled(Paper)`
   gap: 20px;
   height: 400px;
   border: 1px solid #23237d;
-
+  box-sizing: border-box;
+  ${({ isMobile }) =>
+    isMobile &&
+    `
+    width:90%;
+  `}
   &:hover {
     background-color: #292947;
   }
@@ -71,10 +85,16 @@ const StyledButton = styled(Button)`
   width: 50%;
   background-color: #1a1a2e;
   color: white;
+  ${({ isMobile }) =>
+    isMobile &&
+    `
+    width:60%;
+  `}
 `;
 
-export default function About() {
+export default function About({ isMobile }) {
   const tamañoIcon = "97px";
+  const tamañoIconMobile = "65px";
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -84,7 +104,7 @@ export default function About() {
     });
   }, []);
   return (
-    <BackgroundAbout id="About">
+    <BackgroundAbout isMobile={isMobile} id="About">
       <StyledPaper
         data-aos="fade-right"
         elevation={3}
@@ -93,11 +113,12 @@ export default function About() {
           color: "white",
           transition: "0.5s all",
         }}
+        isMobile={isMobile}
       >
-        <Typography variant="h4" component="h2">
+        <Typography variant={isMobile ? "h5" : "h4"} component="h2">
           About me
         </Typography>
-        <Typography variant="h6" component="h3">
+        <Typography variant={isMobile ? "h7" : "h6"} component="h3">
           Front-end Developer / REACT
         </Typography>
         <Typography variant="body1">
@@ -114,12 +135,14 @@ export default function About() {
           download
           size="large"
           variant="contained"
+          isMobile={isMobile}
         >
           Download CV
         </StyledButton>
       </StyledPaper>
 
       <StylePaper
+        isMobile={isMobile}
         data-aos="fade-left"
         elevation={3}
         sx={{
@@ -135,16 +158,46 @@ export default function About() {
         </div>
 
         <span>
-          <DiCss3 size={tamañoIcon} color="#264de4" />
-          <DiGithubBadge size={tamañoIcon} color="#171515" />
-          <DiHtml5 size={tamañoIcon} color="#e34c26" />
-          <DiJavascript1 size={tamañoIcon} color="#f0db4f" />
-          <DiReact size={tamañoIcon} color="#61DBFB" />
-          <DiTrello size={tamañoIcon} color="#0084D1" />
-          <SiCplusplus size={tamañoIcon} color="#264de4" />
-          <DiJava size={tamañoIcon} color="#f89820" />
-          <SiMui size={tamañoIcon} color="#0084D1" />
-          <DiNpm size={tamañoIcon} color="#CC3534" />
+          <DiCss3
+            size={isMobile ? tamañoIconMobile : tamañoIcon}
+            color="#264de4"
+          />
+          <DiGithubBadge
+            size={isMobile ? tamañoIconMobile : tamañoIcon}
+            color="#171515"
+          />
+          <DiHtml5
+            size={isMobile ? tamañoIconMobile : tamañoIcon}
+            color="#e34c26"
+          />
+          <DiJavascript1
+            size={isMobile ? tamañoIconMobile : tamañoIcon}
+            color="#f0db4f"
+          />
+          <DiReact
+            size={isMobile ? tamañoIconMobile : tamañoIcon}
+            color="#61DBFB"
+          />
+          <DiTrello
+            size={isMobile ? tamañoIconMobile : tamañoIcon}
+            color="#0084D1"
+          />
+          <SiCplusplus
+            size={isMobile ? tamañoIconMobile : tamañoIcon}
+            color="#264de4"
+          />
+          <DiJava
+            size={isMobile ? tamañoIconMobile : tamañoIcon}
+            color="#f89820"
+          />
+          <SiMui
+            size={isMobile ? tamañoIconMobile : tamañoIcon}
+            color="#0084D1"
+          />
+          <DiNpm
+            size={isMobile ? tamañoIconMobile : tamañoIcon}
+            color="#CC3534"
+          />
         </span>
       </StylePaper>
     </BackgroundAbout>

@@ -1,4 +1,4 @@
-import { Toolbar, useMediaQuery } from "@mui/material";
+import { Toolbar } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -6,13 +6,12 @@ import Link from "@mui/material/Link";
 import { useState, useEffect, useRef } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 
-function Header() {
+function Header({ isMobile }) {
   const menus = ["Home", "About", "Education", "Projects", "Contact"];
   const [isScrolling, setIsScrolling] = useState(false);
   const [links, setLinks] = useState([]);
   const linksRef = useRef(null);
   const [currentSection, setCurrentSection] = useState("");
-  const isMobile = useMediaQuery("(max-width:720px)");
   const [menu, setMenu] = useState(false);
 
   useEffect(() => {

@@ -13,6 +13,8 @@ const ContactSection = styled.section`
   justify-content: center;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 const ContactTitle = styled(Typography)`
@@ -23,6 +25,11 @@ const DivContact = styled.div`
   height: 40vh;
   display: flex;
   justify-content: space-evenly;
+  ${({ isMobile }) =>
+    isMobile &&
+    `
+    flex-direction: column;
+  `}
 `;
 
 const ContactLink = styled(Link)`
@@ -38,7 +45,7 @@ const ContactLink = styled(Link)`
   }
 `;
 
-export default function Contact() {
+export default function Contact({ isMobile }) {
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -80,11 +87,19 @@ export default function Contact() {
       >
         Contact Me
       </ContactTitle>
-      <DivContact>
+      <DivContact isMobile={isMobile}>
         {contactLinks.map((link, index) => (
           <ContactLink
             key={link.label}
-            data-aos={index % 2 === 0 ? "fade-down" : "fade-up"}
+            data-aos={
+              isMobile
+                ? index % 2 === 0
+                  ? "fade-left"
+                  : "fade-right"
+                : index % 2 === 0
+                ? "fade-down"
+                : "fade-up"
+            }
             href={link.href}
             target={link.target}
             sx={{ color: link.color, textDecoration: "none", fontSize: "20px" }}

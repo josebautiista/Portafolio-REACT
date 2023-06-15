@@ -9,20 +9,33 @@ export const ImgContainer = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  height: 100%;
 `;
 
 export const Img = styled.img`
   width: 90%;
+  ${({ isMobile }) =>
+    isMobile &&
+    `
+    width:80%;
+  `}
 `;
 
 export const FabContainer = styled.div`
   position: absolute;
   bottom: 16px;
   right: 70px;
+  ${({ isMobile }) =>
+    isMobile &&
+    `
+    right:35px;
+    bottom:-8px;
+  `}
 `;
 
 export default function Project(props) {
   const { src, alt, link, repo } = props.datos;
+  const { isMobile } = props;
 
   const handleImgClick = () => {
     window.open(link, "_blank");
@@ -35,8 +48,8 @@ export default function Project(props) {
 
   return (
     <ImgContainer onClick={handleImgClick}>
-      <Img src={src} alt={alt} />
-      <FabContainer>
+      <Img src={src} alt={alt} isMobile={isMobile} />
+      <FabContainer isMobile={isMobile}>
         <Tooltip title="Repositorio" arrow={true} placement="top">
           <Fab
             color="primary"

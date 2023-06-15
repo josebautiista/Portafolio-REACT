@@ -48,15 +48,15 @@ const project = [
   },
 ];
 
-export default function Projects() {
+export default function Projects({ isMobile }) {
   return (
     <BackgroundProjects id="Projects">
       <Typography variant="h4">Projects</Typography>
       <Carousel
-        height="400px"
+        height={isMobile ? "100px" : "400px"}
         animation="slide"
         navButtonsAlwaysVisible="true"
-        sx={{ width: "73vw", padding: "20px" }}
+        sx={{ width: isMobile ? "90vw" : "73vw", padding: "20px" }}
         navButtonsProps={{
           style: {
             backgroundColor: "white",
@@ -67,7 +67,7 @@ export default function Projects() {
         }}
       >
         {project.map((pro, i) => (
-          <Project key={i} datos={pro} />
+          <Project key={i} datos={pro} isMobile={isMobile} />
         ))}
       </Carousel>
     </BackgroundProjects>
