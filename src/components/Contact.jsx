@@ -4,6 +4,7 @@ import { AiOutlineMail, AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 
 const ContactSection = styled.section`
   background-color: #1a1a2e;
@@ -25,11 +26,9 @@ const DivContact = styled.div`
   height: 40vh;
   display: flex;
   justify-content: space-evenly;
-  ${({ isMobile }) =>
-    isMobile &&
-    `
+  @media (max-width: 768px) {
     flex-direction: column;
-  `}
+  }
 `;
 
 const ContactLink = styled(Link)`
@@ -87,7 +86,7 @@ export default function Contact({ isMobile }) {
       >
         Contact Me
       </ContactTitle>
-      <DivContact isMobile={isMobile}>
+      <DivContact>
         {contactLinks.map((link, index) => (
           <ContactLink
             key={link.label}
@@ -112,3 +111,7 @@ export default function Contact({ isMobile }) {
     </ContactSection>
   );
 }
+
+Contact.propTypes = {
+  isMobile: PropTypes.bool.isRequired,
+};

@@ -2,6 +2,7 @@ import { Typography } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import { styled } from "styled-components";
 import Project from "./project";
+import PropTypes from "prop-types";
 
 export const BackgroundProjects = styled.section`
   background: #1a1a2e;
@@ -73,3 +74,7 @@ export default function Projects({ isMobile }) {
     </BackgroundProjects>
   );
 }
+
+Projects.propTypes = {
+  isMobile: PropTypes.bool.isRequired,
+};

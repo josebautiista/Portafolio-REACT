@@ -72,4 +72,5 @@ Project.propTypes = {
     link: PropTypes.string.isRequired,
     repo: PropTypes.string.isRequired,
   }).isRequired,
+  isMobile: PropTypes.bool.isRequired,
 };

@@ -14,6 +14,7 @@ import { SiCplusplus, SiMui } from "react-icons/si";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 
 export const BackgroundAbout = styled.section`
   background: #1a1a2e;
@@ -24,12 +25,10 @@ export const BackgroundAbout = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  ${({ isMobile }) =>
-    isMobile &&
-    `
+  @media (max-width: 768px) {
     flex-direction: column;
-    gap:30px;
-  `}
+    gap: 30px;
+  }
 `;
 
 const StyledPaper = styled(Paper)`
@@ -39,18 +38,17 @@ const StyledPaper = styled(Paper)`
   width: 40%;
   padding: 20px;
   gap: 20px;
-  height: auto;
+  height: 400px;
   border: 1px solid #23237d;
   box-sizing: border-box;
 
   &:hover {
     background-color: #292947;
   }
-  ${({ isMobile }) =>
-    isMobile &&
-    `
+  @media (max-width: 768px) {
     width: 90%;
-  `}
+    height: auto;
+  }
 `;
 
 const StylePaper = styled(Paper)`
@@ -63,11 +61,9 @@ const StylePaper = styled(Paper)`
   height: 400px;
   border: 1px solid #23237d;
   box-sizing: border-box;
-  ${({ isMobile }) =>
-    isMobile &&
-    `
-    width:90%;
-  `}
+  @media (max-width: 768px) {
+    width: 90%;
+  }
   &:hover {
     background-color: #292947;
   }
@@ -85,15 +81,13 @@ const StyledButton = styled(Button)`
   width: 50%;
   background-color: #1a1a2e;
   color: white;
-  ${({ isMobile }) =>
-    isMobile &&
-    `
-    width:60%;
-  `}
+  @media (max-width: 768px) {
+    width: 60%;
+  }
 `;
 
-export default function About({ isMobile }) {
-  const tamañoIcon = "97px";
+function About({ isMobile }) {
+  const tamañoIcon = "5rem";
   const tamañoIconMobile = "65px";
   useEffect(() => {
     AOS.init({
@@ -103,8 +97,9 @@ export default function About({ isMobile }) {
       mirror: false,
     });
   }, []);
+
   return (
-    <BackgroundAbout isMobile={isMobile} id="About">
+    <BackgroundAbout id="About">
       <StyledPaper
         data-aos="fade-right"
         elevation={3}
@@ -113,7 +108,6 @@ export default function About({ isMobile }) {
           color: "white",
           transition: "0.5s all",
         }}
-        isMobile={isMobile}
       >
         <Typography variant={isMobile ? "h5" : "h4"} component="h2">
           About me
@@ -135,14 +129,12 @@ export default function About({ isMobile }) {
           download
           size="large"
           variant="contained"
-          isMobile={isMobile}
         >
           Download CV
         </StyledButton>
       </StyledPaper>
 
       <StylePaper
-        isMobile={isMobile}
         data-aos="fade-left"
         elevation={3}
         sx={{
@@ -203,3 +195,9 @@ export default function About({ isMobile }) {
     </BackgroundAbout>
   );
 }
+
+About.propTypes = {
+  isMobile: PropTypes.bool,
+};
+
+export default About;

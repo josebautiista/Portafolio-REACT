@@ -5,6 +5,16 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { useState, useEffect, useRef } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
+import PropTypes from "prop-types";
+import { styled } from "styled-components";
+
+const Nav = styled(AppBar)`
+  display: flex;
+  justify-content: center;
+  height: 80px;
+  width: 100%;
+  transition: background-color 0.3s ease-in-out;
+`;
 
 function Header({ isMobile }) {
   const menus = ["Home", "About", "Education", "Projects", "Contact"];
@@ -92,7 +102,7 @@ function Header({ isMobile }) {
   }, [isMobile, menu]);
 
   return (
-    <AppBar
+    <Nav
       position="fixed"
       sx={{
         display: "flex",
@@ -160,8 +170,12 @@ function Header({ isMobile }) {
           </div>
         </Toolbar>
       </Container>
-    </AppBar>
+    </Nav>
   );
 }
+
+Header.propTypes = {
+  isMobile: PropTypes.bool.isRequired,
+};
 
 export default Header;

@@ -7,8 +7,8 @@ import Contact from "../components/Contact";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-
 import { useMediaQuery } from "@mui/material";
+
 const BackgroundHome = styled.section`
   background: url("./bg-fon.jpg");
   width: 100%;
@@ -24,13 +24,10 @@ const Imagen = styled.img`
   width: 300px;
   height: 300px;
   border-radius: 100%;
-
-  ${({ isMobile }) =>
-    isMobile &&
-    `
+  @media (max-width: 768px) {
     width: 150px;
     height: 150px;
-  `}
+  }
 `;
 
 const Container = styled.div`
@@ -48,21 +45,17 @@ const Container = styled.div`
     margin: 0 auto;
     letter-spacing: 2px;
     animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
-    ${({ isMobile }) =>
-      isMobile &&
-      `
-    font-size:2rem;
-  `}
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
   }
   > p {
     color: white;
     margin: 0;
     font-size: 1.5rem;
-    ${({ isMobile }) =>
-      isMobile &&
-      `
-    font-size:1rem;
-  `}
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
   @keyframes typing {
     from {
@@ -85,7 +78,7 @@ const Container = styled.div`
 `;
 
 export default function Home() {
-  const isMobile = useMediaQuery("(max-width:720px)");
+  const isMobile = useMediaQuery("(max-width:768px)");
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -99,7 +92,6 @@ export default function Home() {
       <Header isMobile={isMobile} />
       <BackgroundHome style={{ flexDirection: isMobile && "column" }} id="Home">
         <Imagen
-          isMobile={isMobile}
           src="https://github.com/josebautiista.png"
           alt="Jose Bautista"
         />
