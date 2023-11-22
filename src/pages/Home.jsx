@@ -97,7 +97,7 @@ export default function Home() {
         />
         <Container isMobile={isMobile}>
           <h1>JOSE BAUTISTA</h1>
-          <p>Front-end Developer</p>
+          <p>Software Developer</p>
         </Container>
       </BackgroundHome>
       <About isMobile={isMobile} />

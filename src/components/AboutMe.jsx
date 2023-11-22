@@ -38,7 +38,7 @@ const StyledPaper = styled(Paper)`
   width: 40%;
   padding: 20px;
   gap: 20px;
-  height: 400px;
+  height: 450px;
   border: 1px solid #23237d;
   box-sizing: border-box;
 
@@ -58,7 +58,7 @@ const StylePaper = styled(Paper)`
   width: 40%;
   padding: 20px;
   gap: 20px;
-  height: 400px;
+  height: 450px;
   border: 1px solid #23237d;
   box-sizing: border-box;
   @media (max-width: 768px) {
@@ -113,15 +113,18 @@ function About({ isMobile }) {
           About me
         </Typography>
         <Typography variant={isMobile ? "h7" : "h6"} component="h3">
-          Front-end Developer / REACT
+          Software Developer / JavaScript
         </Typography>
         <Typography variant="body1">
-          Hello, I am a front-end developer experienced in CSS3, HTML5,
-          JavaScript, and React. I have a project management background and
-          experience with tools like GitHub and Trello. Additionally, I have
-          knowledge in C++ and Java. I am passionate about creating functional
-          and visually appealing web interfaces while ensuring high standards of
-          quality and ease of use.
+          I am passionate about software development and have expertise in
+          various technologies like REACT, NodeJS, SpringBoot, MySQL, and Astro.
+          I have honed my programming skills in Java, C++, and especially
+          JavaScript. I thrive on challenges, continuously learn, and bring a
+          proactive approach and commitment to any development team. My
+          experience includes web scraping, ChatGPT integration, and building
+          specialized application components. I aim to further grow and
+          contribute my diverse tech experience to challenging projects, solving
+          problems creatively and effectively.
         </Typography>
         <StyledButton
           color="primary"
