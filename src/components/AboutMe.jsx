@@ -125,7 +125,7 @@ function About({ isMobile }) {
         </Typography>
         <StyledButton
           color="primary"
-          href="./Hoja-De-Vida-Jose.pdf"
+          href="./Hoja-De-Vida.pdf"
           download
           size="large"
           variant="contained"
